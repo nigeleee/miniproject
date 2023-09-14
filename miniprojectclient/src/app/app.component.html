@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <a class="navbar-brand" [routerLink]='["/home"]'>
+    <img src="https://vttp-miniproject.s3.ap-southeast-1.amazonaws.com/logo.png" alt="Brand" height="40">
+    <strong class="kimchi-text">LEE'S KIMCHI</strong>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      </li>
+      <div *ngIf="isLoggedIn; else guest">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>Account
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/account-details']">Profile</button>
+          <button mat-menu-item [routerLink]="['/order-history']">Purchase History</button>
+          <button mat-menu-item [routerLink]="['/submit-review']">Submit Review</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products">
+          <mat-icon>local_offer</mat-icon>Products
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cart">
+          <mat-icon>shopping_cart</mat-icon>Cart
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="appcontainer">
+  <router-outlet></router-outlet>
+</div>
+<ng-template #guest>
+  <a class="nav-link" *ngIf="!isLoggedIn" routerLink="/login">
+    <mat-icon>login</mat-icon>Login
+  </a>
+</ng-template>
+
+
+
+
+
+
+
+
+

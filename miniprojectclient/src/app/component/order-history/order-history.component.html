@@ -1,0 +1,22 @@
+<div class="container mt-5" *ngFor="let order of orders">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center"> Your Order History </h5>
+          <p class="card-text"><strong>Order ID: </strong>{{ order.orderId }}</p>
+          <div *ngFor="let item of order.cartItems">
+            <p class="card-text"><strong>Product ID: </strong>{{ item.productId }}</p>
+            <p class="card-text"><strong>Product Name: </strong>{{ item.name }}</p>
+            <p class="card-text"><strong>Quantity: </strong> {{ item.quantity }}</p>
+            <p class="card-text"><strong>Total: </strong>{{ item.totalPrice }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="text-center">
+  <button class="btn btn-primary" routerLink="/home">Back</button>
+</div>

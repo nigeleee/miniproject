@@ -1,0 +1,51 @@
+<div class="container mt-5" *ngIf="product">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" [src]="product.productUrl" alt="{{product.name}}">
+        <div class="card-body">
+          <h5 class="card-title">Lee's {{ product.name }} Kimchi</h5>
+          <p class="card-text"><strong>${{ product.price }}</strong></p>
+          <p class="card-text">{{ product.description }}</p>
+          <!-- <p class="card-text">Quantity: {{ product.quantity }}</p>
+          <p class="card-text">Size: {{ product.size }}</p> -->
+          <hr>
+          <div class="text-center">
+            <button class="quantityButton" (click)="minus()">-</button>
+            &nbsp; <span>{{ quantity }}</span>
+            &nbsp; <button class="quantityButton" (click)="add()">+</button>
+          </div>
+          <br>
+          <div class="text-center">
+            <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+            <br><br>
+            <button class="btn btn-warning" (click)="goToCart()">Proceed to Checkout</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<h2>You may also like</h2>
+<div style="display: flex; justify-content: center; align-items: center; overflow-x: auto;">
+  <mat-card *ngFor="let item of items" style="width: 200px; margin: 8px;">
+    <img mat-card-image src="{{ item.productUrl}}">
+    <mat-card-content>
+      <h3 mat-line> Lee's {{ item.name }} Kimchi</h3>
+      <h3 mat-line> Size: {{ item.size }}</h3>
+      <p mat-line>Price: ${{ item.price }} </p>
+      <a [routerLink]="['/product/', item.productId]" class="btn btn-primary">View Product</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf="toggleCart" class="cart">
+  <h3>Your Cart</h3>
+  <div *ngFor="let item of cart">
+    <p>{{ item.name }} | Quantity: {{ item.quantity }} | Total Price: {{ item.totalPrice }}</p>
+    <button class="btn btn-danger" (click)="removeCartItem(item)">Remove</button>
+  </div>
+  <br>
+  <button class="btn btn-warning" (click)="clearCart()">Clear</button>
+  &nbsp;<button class="toggle-hide" (click)="hideCart()">Close</button>
+</div>

@@ -1,0 +1,73 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h3>Create Account</h3>
+        </div>
+        <div class="card-body">
+          <form  class="form-group" [formGroup]="form" (ngSubmit)="createUser()">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                <div class="text-danger" *ngIf="form.controls['firstName'].touched && form.controls['firstName'].errors?.['required']">
+                  Please enter a name (Mandatory)
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="lastName" placeholder="Surname">
+                <div class="text-danger" *ngIf="form.controls['lastName'].touched && form.controls['lastName'].errors?.['required']">
+                  Please enter a name (Mandatory)
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="email" placeholder="Email">
+              <span class="text-danger" *ngIf="duplicateEmailMsg">{{duplicateEmailMsg}}</span>
+                <div class="text-danger" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']">
+                  Please enter an email address (Mandatory)
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="phone" maxLength="8" placeholder="Mobile Number">
+                <span class="text-danger" *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']">
+                  Please enter a Mobile Number (Mandatory)
+                </span>
+                <span class="text-danger" *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['maxLength']">
+                  Please enter only 8 digits
+                </span>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                <div class="text-danger" *ngIf="form.controls['address'].touched && form.controls['address'].errors?.['required']">
+                  Please enter a residential address (Mandatory)
+                </div>
+            </div>
+            <br>
+            <div class="form-group position-relative">
+              <div class="input-group">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password" placeholder="New password" minlength="8">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="showPassword = !showPassword">{{showPassword ? 'Hide' : 'Show'}}</button>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']">
+                Please enter a password (Mandatory)
+              </div>
+              <div class="text-danger" *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['minLength']">
+                Please enter an 8-character alphanumeric password (Mandatory)
+              </div>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+            &nbsp;&nbsp;
+            <a [routerLink]="['/login']" class="btn btn-light">Back</a>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

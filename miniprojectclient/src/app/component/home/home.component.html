@@ -1,0 +1,67 @@
+<div class="banner">
+  <img src="https://vttp-miniproject.s3.ap-southeast-1.amazonaws.com/banner.png" alt="Banner Image">
+  <div class="banner-text">
+    <h1><strong>WELCOME TO LEE'S KIMCHI</strong></h1>
+  </div>
+</div>
+<div class="card-group">
+  <div class="col-md-6 d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-center" style="width: 100%;">
+      <div class="card mb-4 border-0">
+        <div class="card-body text-center">
+          <h1 class="card-title">FLAVOURFUL, BALANCED, FRESH</h1>
+          <p class="card-text">Each tub is carefully curated with the finest ingredients to give you the freshest kimchi.</p>
+          <br><br>
+          <button class="aboutButton" routerLink="/about">Our Story</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-4 border-0">
+    <div class="card-body">
+      <img class="card-img" src="https://vttp-miniproject.s3.ap-southeast-1.amazonaws.com/info.jpg" alt="info image">
+    </div>
+  </div>
+</div>
+<div class="card-group">
+  <div class="card mb-4 border-0">
+    <div class="card-body">
+      <img class="card-img" src="https://vttp-miniproject.s3.ap-southeast-1.amazonaws.com/animation.gif" alt="animation image">
+    </div>
+  </div>
+  <div class="col-md-6 d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-center" style="width: 100%;">
+      <div class="card mb-4 border-0">
+        <div class="card-body text-center">
+          <h2 class="card-title">BROWSE OUR PRODUCTS</h2>
+          <br><br>
+          <button button type="button" class="btn btn-lg btn-success" data-toggle="popover" title="Popover title" routerLink="/products">Shop Now!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<mat-toolbar class="center-text">
+  <span>Our Reviews</span>
+</mat-toolbar>
+<div style="display: flex; overflow-x: auto;">
+  <mat-card *ngFor="let review of reviews" style="width: 200px; margin: 8px;">
+    <img mat-card-image src="{{ review.imageUrl}}">
+    <mat-card-content>
+      <h3 mat-line> User: {{ review.firstName }} {{ review.lastName }} </h3>
+      <p mat-line>{{ review.text }} </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+

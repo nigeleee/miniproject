@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2>Submit a Review</h2>
+        </div>
+        <div class="card-body">
+          <form  class="form-group" [formGroup]="form" (ngSubmit)="submitReview()">
+            <div class="form-group">
+              <textarea type="text" class="form-control" formControlName="review" placeholder="Enter your review" rows="10"></textarea>
+                <div class="text-danger" *ngIf="form.controls['review'].touched && form.controls['review'].errors?.['required']">
+                  Field cannot be empty
+                </div>
+            </div>
+            <br>
+            <input type="file" (change)="onFileChange($event)">
+            <br><br>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+            &nbsp;&nbsp;
+            <a [routerLink]="['/home']" class="btn btn-light">Back</a>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
