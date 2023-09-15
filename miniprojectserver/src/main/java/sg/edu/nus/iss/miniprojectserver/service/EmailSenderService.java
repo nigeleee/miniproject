@@ -7,7 +7,6 @@ import sg.edu.nus.iss.miniprojectserver.entity.Order;
 import sg.edu.nus.iss.miniprojectserver.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,9 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Value("{spring.mail.username}")
-    private String email;
-    
+    // @Value("{spring.mail.username}")
+    // private String email;
+    private static final String email = "nigeleee@gmail.com";
 
     public void sendEmail(String toEmail, String body, String subject) throws MessagingException {
 
