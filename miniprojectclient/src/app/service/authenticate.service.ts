@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 export class AuthenticateService {
 
   private apiUrl: string = 'https://kimchiproject-production.up.railway.app/api/';
-  private oauthUrl: string = 'https://kimchiproject-production.up.railway.app/api/oauth2/authorization/google';
+  private oauthUrl: string = 'https://kimchiproject-production.up.railway.app/oauth2/authorization/google';
 
   // private apiUrl = 'http://localhost:8080/api/';
   // private oauthUrl = 'http://localhost:8080/oauth2/authorization/google'
